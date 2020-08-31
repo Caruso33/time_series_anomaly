@@ -2,7 +2,7 @@
 
 ## tasks
 
-- Webanwendung in React 
+- Webanwendung in React
 - Erstellung des/der Chart(s) in D3
 - Speicherung der Daten in einer Datenbank Ihrer Wahl
 - Kommunikation mit dem Backend zur Datenbankabfrage über REST

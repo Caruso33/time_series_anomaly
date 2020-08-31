@@ -14,9 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path, reverse_lazy
 from .views import TimeSeriesViewSet
 from rest_framework import routers
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
 
 app_name = 'server'
 
@@ -25,6 +29,10 @@ router.register(r'time_series', TimeSeriesViewSet, basename="time_series")
 
 urlpatterns = [
     *router.urls,
+    path("", RedirectView.as_view(url=reverse_lazy("react-app"))),
+    re_path(
+        "app/.*", TemplateView.as_view(template_name="index.html"), name="react-app",
+    ),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

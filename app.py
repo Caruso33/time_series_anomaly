@@ -1,8 +1,13 @@
-from utils import read_csv
+from utils import read_csv, rows_to_sqlite
+
 
 def run():
     csv_path = "data/20200828_Zykluszeiten_Log.csv"
-    read_csv(csv_path)
+    sqlite_path = "data/time_series.db"
 
-if __name__ == '__main__':
+    rows = read_csv(csv_path)
+    rows_to_sqlite(rows, sqlite_path)
+
+
+if __name__ == "__main__":
     run()

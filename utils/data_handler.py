@@ -71,13 +71,13 @@ def rows_to_sqlite(rows: list, sqlite_path: str, col_names: [str]):
     c = conn.cursor()
 
     c.execute(
-        f'CREATE TABLE IF NOT EXISTS zykluszeiten ({col_names[0]} DATE, {col_names[1]} INT)')
+        f'CREATE TABLE IF NOT EXISTS zykluszeiten (id INTEGER PRIMARY KEY AUTOINCREMENT, {col_names[0]} TEXT, {col_names[1]} INT)')
 
     for row in rows:
         col_names_0_val = row[col_names[0]]
         col_names_1_val = row[col_names[1]]
 
-        c.execute(f'INSERT OR IGNORE INTO zykluszeiten ({col_names[0]}, {col_names[1]}) VALUES (?,?)', (
+        c.execute(f'INSERT OR IGNORE INTO zykluszeiten (id, {col_names[0]}, {col_names[1]}) VALUES (NULL,?,?)', (
             col_names_0_val, col_names_1_val,))
 
         conn.commit()

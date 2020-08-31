@@ -7,8 +7,6 @@ function SiteLayout({ children, location, history }) {
 
   const navigateTo = (path) => history.push(path);
 
-  console.log("[pathname.slice(1)]", [pathname.slice(1)]);
-
   return (
     <Layout style={{ height: "100vh" }}>
       <Layout.Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>

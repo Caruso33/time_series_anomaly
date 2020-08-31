@@ -1,13 +1,12 @@
+import "antd/dist/antd.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SiteLayout from "./SiteLayout";
-
-import "antd/dist/antd.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Data from "./pages/Data";
-import Visualization from "./pages/Visualization";
 import Home from "./pages/Home";
+import Visualization from "./pages/Visualization";
+import SiteLayout from "./SiteLayout";
+import "./styles.css";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -21,7 +21,7 @@ from rest_framework import routers
 app_name = 'server'
 
 router = routers.SimpleRouter()
-router.register(r'time_series', TimeSeriesViewSet, basename="time")
+router.register(r'time_series', TimeSeriesViewSet, basename="time_series")
 
 urlpatterns = [
     *router.urls,

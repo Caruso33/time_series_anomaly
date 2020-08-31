@@ -1,4 +1,16 @@
+# python cache
 *.pyc
 __pycache__
 *.db
+
+# editor configs
 .vscode
+
+# javascript dependencies
+node_modules
+
+# testing
+coverage
+
+# production
+build

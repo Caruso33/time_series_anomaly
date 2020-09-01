@@ -2,6 +2,7 @@ import os.path
 from utils import read_csv, rows_to_sqlite, read_sqlite, get_data_col_names
 import manage
 from subprocess import call
+import pandas as pd
 
 
 def prepare_data():
@@ -21,8 +22,30 @@ def prepare_data():
     return read_sqlite(sqlite_path, col_names)
 
 
+def get_data_metrics(rows: list):
+    """
+    Get a summary of the cycle times metrics
+    """
+    df = pd.DataFrame(rows)
+    print(df.describe())
+    """
+    count  1469.000000
+    mean    108.963240
+    std     232.790995
+    min       4.000000
+    25%      50.000000
+    50%     120.000000
+    75%     140.000000
+    max    6000.000000
+    """
+
+
 def run():
-    prepare_data()
+    rows = prepare_data()
+
+    # uncomment to get printed metrics
+    # get_data_metrics(rows)
+    
     # start django server
     call(["python", "manage.py", "migrate"])
     call(["python", "manage.py", "runserver"])
